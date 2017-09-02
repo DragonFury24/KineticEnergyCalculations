@@ -5,23 +5,40 @@ public class KineticMain {
     public static void main (String[] args) {
         Scanner keyboard = new Scanner(System.in);
 
-        System.out.println("Please input the mass of the object.");
-        double mass = doubleInput(keyboard);
-        System.out.println("Please input the velocity of the object.");
-        double velocity = doubleInput(keyboard);
+        System.out.println("Please input the mass of the object in kilograms.");
+        double mass = noNegDInput(keyboard);
+        System.out.println("Please input the velocity of the object in meters per second.");
+        double velocity = dInput(keyboard);
         System.out.println("The kinetic energy of this object is " + .5 * mass * Math.pow(velocity, 2) + " Joules.");
     }
 
-    public static double doubleInput(Scanner keyboard) { //checks if input is a double. If not, then will give error and force user to retry
-        double dInput = -1;
-
-        while (dInput == -1) {
+    private static double dInput(Scanner keyboard) { //checks if input is a double. If not, then will give error and force user to retry
+        double dInput = 0;
+        boolean noInput = true;
+        while (noInput) {
             try {
                 dInput = keyboard.nextDouble();
+                noInput = false;
+            } catch (InputMismatchException I) {
+                System.out.println("You did not input a number. Please try again.");
+                keyboard.next();
+            }
+        }
 
-                if (dInput < 0) {
-                    dInput = -1;
+        return dInput;
+    }
+
+    private static double noNegDInput(Scanner keyboard) { //checks if input is a double. If not, then will give error and force user to retry
+        double dInput = 0;
+        boolean noInput = true;
+        while (noInput) {
+            try {
+                dInput = keyboard.nextDouble();
+                noInput = false;
+
+                if (dInput < 0) { //checks if number is negative and will reset @noInput to force user to retry
                     System.out.println("You put in a number less than 0. Please try again.");
+                    noInput = true;
                 }
             } catch (InputMismatchException I) {
                 System.out.println("You did not input a number. Please try again.");
