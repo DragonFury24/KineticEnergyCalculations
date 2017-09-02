@@ -13,11 +13,11 @@ public class KineticMain {
     }
 
     private static double dInput(Scanner keyboard) { //checks if input is a double. If not, then will give error and force user to retry
-        double dInput = 0;
+        double dOutput = 0;
         boolean noInput = true;
         while (noInput) {
             try {
-                dInput = keyboard.nextDouble();
+                dOutput = keyboard.nextDouble();
                 noInput = false;
             } catch (InputMismatchException I) {
                 System.out.println("You did not input a number. Please try again.");
@@ -25,18 +25,18 @@ public class KineticMain {
             }
         }
 
-        return dInput;
+        return dOutput;
     }
 
     private static double noNegDInput(Scanner keyboard) { //checks if input is a double. If not, then will give error and force user to retry
-        double dInput = 0;
+        double dOutput = 0;
         boolean noInput = true;
         while (noInput) {
             try {
-                dInput = keyboard.nextDouble();
+                dOutput = keyboard.nextDouble();
                 noInput = false;
 
-                if (dInput < 0) { //checks if number is negative and will reset @noInput to force user to retry
+                if (dOutput < 0) { //checks if number is negative and will reset @noInput to force user to retry
                     System.out.println("You put in a number less than 0. Please try again.");
                     noInput = true;
                 }
@@ -46,6 +46,6 @@ public class KineticMain {
             }
         }
 
-        return dInput;
+        return dOutput;
     }
 }
