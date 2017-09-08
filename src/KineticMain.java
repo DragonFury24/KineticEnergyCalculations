@@ -12,7 +12,7 @@ public class KineticMain {
         System.out.println("The kinetic energy of this object is " + .5 * mass * Math.pow(velocity, 2) + " Joules.");
     }
 
-    private static double dInput(Scanner keyboard) { //checks if input is a double. If not, then will give error and force user to retry
+    public static double dInput(Scanner keyboard) { //checks if input is a double. If not, then will give error and force user to retry
         double dOutput = 0;
         boolean noInput = true;
         while (noInput) {
@@ -24,11 +24,10 @@ public class KineticMain {
                 keyboard.next();
             }
         }
-
         return dOutput;
     }
 
-    private static double noNegDInput(Scanner keyboard) { //checks if input is a double. If not, then will give error and force user to retry
+    public static double noNegDInput(Scanner keyboard) { //checks if input is a double. If not, then will give error and force user to retry
         double dOutput = 0;
         boolean noInput = true;
         while (noInput) {
@@ -45,7 +44,6 @@ public class KineticMain {
                 keyboard.next();
             }
         }
-
         return dOutput;
     }
 }
